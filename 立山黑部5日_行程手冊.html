@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0f1a26">
+<title>夏日山語・立山黑部 5 日｜行程手冊</title>
+<style>
+  :root{
+    color-scheme:dark;
+    --ink:#e9eff6;
+    --ink-soft:#aab8c6;
+    --ink-faint:#80909f;
+    --paper:#0f1a26;
+    --card:#17242f;
+    --line:#2a3a48;
+    --snow:#1d2c39;
+    --indigo:#1b3a5b;
+    --indigo-deep:#0b1521;
+    --teal:#43b3c7;
+    --active:#357aab;
+    --d1:#c8593f;
+    --d2:#359268;
+    --d3:#2a8aa6;
+    --d4:#8f7bc0;
+    --d5:#d29a3c;
+    --acc:var(--indigo);
+    --shadow:0 1px 2px rgba(0,0,0,.25),0 8px 22px rgba(0,0,0,.30);
+    --amber-bg:rgba(210,154,60,.10);
+    --amber-line:rgba(210,154,60,.32);
+    --amber-tx:#e6c690;
+    --amber-b:#f0c477;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth;background:#0f1a26 !important;min-height:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    color:var(--ink);
+    background:#0f1a26 !important;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .num{font-family:"Iowan Old Style","Palatino Linotype",Georgia,"Songti TC",serif;font-feature-settings:"tnum";}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px;}
+
+  /* ---------- sticky nav ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,26,38,.88);
+    backdrop-filter:saturate(150%) blur(12px);
+    -webkit-backdrop-filter:saturate(150%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{padding-top:9px;padding-bottom:9px}
+  .brand{font-size:13px;font-weight:800;letter-spacing:.06em;color:#d4e3f1;display:flex;align-items:center;gap:7px}
+  .brand .tag{font-weight:600;color:var(--ink-faint);letter-spacing:.02em}
+  .pills{display:flex;gap:7px;overflow-x:auto;margin-top:8px;padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none}
+  .pills::-webkit-scrollbar{display:none}
+  .pill{
+    flex:0 0 auto;font-size:13px;font-weight:700;color:var(--ink-soft);cursor:pointer;
+    background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:6px 13px;text-decoration:none;transition:.18s;white-space:nowrap;
+  }
+  .pill .num{font-size:14px;font-weight:800;margin-right:3px}
+  .pill[data-active="true"]{background:var(--active);color:#fff;border-color:var(--active)}
+  .pill.lang{color:var(--teal);border-color:rgba(67,179,199,.35);background:rgba(67,179,199,.12)}
+  .pill:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 12% -10%,#2c5f86 0%,transparent 55%),
+      radial-gradient(140% 120% at 100% 0%,#0e2236 0%,transparent 60%),
+      linear-gradient(160deg,#1b3a5b 0%,#0d2031 100%);
+    color:#eaf2f9;position:relative;overflow:hidden;
+  }
+  .hero .ridge{position:absolute;inset:auto 0 -2px 0;height:60px;display:block;color:var(--paper)}
+  .hero .wrap{padding-top:26px;padding-bottom:54px;position:relative;z-index:2}
+  .eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:#9cc2dd;font-weight:700}
+  .title{font-size:30px;line-height:1.28;font-weight:800;margin:10px 0 4px;letter-spacing:.01em}
+  .title small{display:block;font-size:14px;font-weight:600;color:#b9d2e6;letter-spacing:.12em;margin-top:8px}
+  .route-line{font-size:13px;color:#bcd5e8;margin-top:12px;font-weight:600}
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+  .meta{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:13px;padding:10px 12px}
+  .meta .k{font-size:11px;letter-spacing:.12em;color:#9cc2dd;font-weight:700}
+  .meta .v{font-size:14px;font-weight:700;margin-top:2px;color:#fff}
+  .meta .v .num{font-size:15px}
+  .meta.full{grid-column:1/-1}
+  .calls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;position:relative;z-index:2}
+  .call{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:13px;font-weight:700;
+    background:#eaf2f9;color:#143350;border-radius:999px;padding:8px 14px;box-shadow:var(--shadow)}
+  .call .ph{font-size:15px}
+
+  /* ---------- section base ---------- */
+  section{padding:30px 0 4px}
+  .kicker{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--ink-faint);text-transform:uppercase}
+  .kicker::before{content:"";width:26px;height:2px;background:currentColor;border-radius:2px}
+  h2.sec{font-size:21px;font-weight:800;margin:8px 0 16px;letter-spacing:.01em;color:var(--ink)}
+
+  /* ---------- quick index ---------- */
+  .idx{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+  .idx-row{display:block;text-decoration:none;color:inherit;padding:13px 15px;border-bottom:1px solid var(--line);cursor:pointer}
+  .idx-row:last-child{border-bottom:0}
+  .idx-row:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+  .idx-head{display:flex;align-items:baseline;gap:10px}
+  .idx-d{font-size:12px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--acc);border-radius:7px;padding:2px 8px;flex:0 0 auto}
+  .idx-date{font-size:12px;color:var(--ink-faint);font-weight:700}
+  .idx-theme{font-size:15px;font-weight:800;margin-left:auto;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .chip{font-size:12.5px;font-weight:600;color:var(--ink-soft);background:var(--snow);border-radius:7px;padding:3px 9px;text-decoration:none;cursor:pointer}
+  .chip:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+
+  /* ---------- day section ---------- */
+  .day{scroll-margin-top:104px;padding-top:34px}
+  .day-head{position:relative;border-radius:18px;padding:18px 18px 16px;color:#fff;overflow:hidden;box-shadow:var(--shadow)}
+  .day-head::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,var(--acc),color-mix(in srgb,var(--acc) 60%,#000 40%));z-index:0}
+  .day-head>*{position:relative;z-index:1}
+  .day-no{font-size:13px;font-weight:800;letter-spacing:.22em;opacity:.9}
+  .day-no .big{font-size:38px;letter-spacing:0;display:inline-block;margin-right:4px;vertical-align:-4px}
+  .day-date{font-size:13px;font-weight:700;opacity:.94;margin-top:2px}
+  .day-theme{font-size:20px;font-weight:800;margin-top:8px;letter-spacing:.01em}
+  .day-route{font-size:12.5px;font-weight:600;opacity:.92;margin-top:9px;line-height:1.6}
+  .day-wx{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:11px;font-size:12px;font-weight:700;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24);border-radius:11px;padding:7px 11px;line-height:1.5}
+  .day-wx .t{font-size:14px;font-weight:800;white-space:nowrap}
+  .day-wx .sep{opacity:.55}
+  .day-wx a{color:#fff;font-weight:800;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+  .wx-chip{font-size:12px;font-weight:800;color:#fff;background:var(--acc);border-radius:7px;padding:3px 9px;white-space:nowrap}
+
+  .stop{scroll-margin-top:104px;display:flex;gap:13px;padding:16px 4px 16px 2px;border-bottom:1px solid var(--line)}
+  .stop:last-of-type{border-bottom:0}
+  .stop-ico{flex:0 0 40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;
+    background:color-mix(in srgb,var(--acc) 26%,var(--card));border:1px solid color-mix(in srgb,var(--acc) 40%,var(--card))}
+  .stop-body{flex:1;min-width:0}
+  .stop-name{font-size:16px;font-weight:800;letter-spacing:.01em;color:var(--ink)}
+  .stop-jp{font-size:12px;font-weight:600;color:var(--ink-faint);margin-left:6px}
+  .stop-badge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.04em;
+    color:color-mix(in srgb,var(--acc) 50%,#ffffff);
+    background:color-mix(in srgb,var(--acc) 22%,var(--card));border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+  .stop-desc{font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+  .stop-desc b{color:var(--ink)}
+  .stop-tip{font-size:12.5px;color:var(--amber-tx);margin-top:7px;background:var(--amber-bg);border:1px solid var(--amber-line);border-radius:9px;padding:7px 10px}
+  .stop-tip b{color:var(--amber-b)}
+
+  /* meals + hotel */
+  .logi{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;box-shadow:var(--shadow)}
+  .meals{display:flex;gap:8px;flex-wrap:wrap}
+  .meal{flex:1 1 0;min-width:88px;font-size:12px;background:var(--snow);border-radius:10px;padding:8px 9px}
+  .meal .when{font-weight:800;color:var(--ink);font-size:11px;letter-spacing:.06em}
+  .meal .what{color:var(--ink-soft);margin-top:2px;line-height:1.45}
+  .meal .x{color:#ef8a8a;font-weight:700}
+  .hotel{display:flex;align-items:center;gap:10px;margin-top:11px;padding-top:11px;border-top:1px solid var(--line)}
+  .hotel .label{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--ink-faint)}
+  .hotel .hname{font-size:14px;font-weight:800;color:var(--ink)}
+  .hotel a.tel{margin-left:auto;flex:0 0 auto;font-size:12.5px;font-weight:800;text-decoration:none;color:#fff;
+    background:var(--acc);border-radius:999px;padding:7px 13px}
+
+  /* ---------- alpine transit timeline (signature) ---------- */
+  .alpine{margin-top:16px;background:linear-gradient(180deg,#12222f,#1a3647);border:1px solid var(--line);border-radius:18px;padding:18px 16px 8px;color:#dcebf4;box-shadow:var(--shadow)}
+  .alpine h3{margin:0;font-size:15px;font-weight:800;letter-spacing:.02em;color:#fff;display:flex;align-items:center;gap:8px}
+  .alpine .sub{font-size:12px;color:#a9c6d8;margin:4px 0 14px}
+  .leg{position:relative;padding:0 0 0 34px}
+  .node{position:relative;padding:0 0 16px}
+  .node::before{content:"";position:absolute;left:-22px;top:3px;width:13px;height:13px;border-radius:50%;
+    background:#7fd0e0;border:3px solid #12222f;box-shadow:0 0 0 2px #7fd0e0}
+  .node::after{content:"";position:absolute;left:-16px;top:16px;bottom:-3px;width:2px;background:linear-gradient(#7fd0e0,#4a8aa3)}
+  .node:last-child::after{display:none}
+  .node .pt{font-size:14.5px;font-weight:800;color:#fff}
+  .node .pt small{font-weight:600;color:#a9c6d8;font-size:11px;margin-left:5px}
+  .node .via{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#bfe0ec;margin-top:3px;
+    background:rgba(127,208,224,.12);border:1px solid rgba(127,208,224,.25);border-radius:7px;padding:2px 8px}
+  .alpine .peak{font-size:11px;color:#ffd9a6;font-weight:800;letter-spacing:.04em}
+
+  /* ---------- callout note ---------- */
+  .note{margin-top:14px;border-radius:14px;padding:13px 15px;font-size:13px;background:var(--amber-bg);border:1px solid var(--amber-line);color:var(--amber-tx)}
+  .note b{color:var(--amber-b)}
+  .note ul{margin:7px 0 0;padding-left:18px}
+  .note li{margin:3px 0}
+
+  /* ---------- accordion (phrases & info) ---------- */
+  .acc{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
+  .acc>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;color:var(--ink)}
+  .acc>summary::-webkit-details-marker{display:none}
+  .acc .ico{font-size:18px}
+  .acc .cnt{margin-left:auto;font-size:11px;color:var(--ink-faint);font-weight:700}
+  .acc>summary::after{content:"＋";color:var(--ink-faint);font-weight:700;font-size:16px;margin-left:8px}
+  .acc[open]>summary::after{content:"－"}
+  .acc[open]>summary{border-bottom:1px solid var(--line)}
+  .ph-row{padding:12px 16px;border-bottom:1px solid var(--line)}
+  .ph-row:last-child{border-bottom:0}
+  .ph-zh{font-size:13px;font-weight:800;color:var(--ink)}
+  .ph-jp{font-size:17px;font-weight:700;color:#c4ddf2;margin-top:3px;letter-spacing:.01em}
+  .ph-ro{font-size:12.5px;color:var(--teal);font-weight:600;font-style:italic;margin-top:1px}
+
+  .info-row{padding:11px 16px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
+  .info-row:last-child{border-bottom:0}
+  .info-row b{color:var(--ink)}
+  .kv{display:flex;gap:10px}
+  .kv .k{flex:0 0 76px;font-weight:800;color:var(--ink);font-size:12.5px}
+
+  /* ---------- footer ---------- */
+  .foot{margin-top:30px;background:var(--indigo-deep);color:#cfe0ee;padding:26px 0 40px;border-top:1px solid var(--line)}
+  .foot .wrap{text-align:center}
+  .foot .big{font-size:15px;font-weight:800;color:#fff;margin-bottom:14px}
+  .foot .ecalls{display:flex;flex-direction:column;gap:8px;max-width:340px;margin:0 auto}
+  .foot a.ecall{display:flex;justify-content:space-between;align-items:center;text-decoration:none;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:11px 15px;color:#eaf2f9}
+  .foot a.ecall .lab{font-size:13px;font-weight:700}
+  .foot a.ecall .no{font-size:13px;font-weight:800;color:#9cc2dd}
+  .foot .disc{font-size:11px;color:#7c93a8;margin-top:18px;line-height:1.7;text-align:left}
+  .back{position:fixed;right:14px;bottom:16px;z-index:40;width:46px;height:46px;border-radius:50%;
+    background:var(--active);color:#fff;border:none;box-shadow:0 6px 18px rgba(0,0,0,.45);font-size:18px;display:none;cursor:pointer}
+  .back.show{display:grid;place-items:center}
+
+  /* ---------- per-day extras: weather / food / souvenir ---------- */
+  .extra{margin-top:14px;display:grid;gap:10px}
+  .xcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:14px;padding:13px 14px;box-shadow:var(--shadow)}
+  .xhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13.5px;font-weight:800;color:var(--ink);letter-spacing:.02em}
+  .xhead .xi{font-size:18px;line-height:1}
+  .xbody{margin-top:8px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .xbody b{color:var(--ink)}
+  .wx{display:flex;align-items:baseline;gap:10px;margin-top:7px;flex-wrap:wrap}
+  .wx .temp{font-size:21px;font-weight:800;color:var(--ink)}
+  .wx .cond{font-size:12.5px;color:var(--ink-soft);font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .tg{font-size:11px;font-weight:800;border-radius:6px;padding:3px 8px;letter-spacing:.02em}
+  .tg.rain{background:rgba(63,176,196,.16);color:#8fdcec}
+  .tg.heat{background:rgba(210,154,60,.18);color:#f2c477}
+  .tg.cold{background:rgba(140,165,215,.20);color:#bcd2f2}
+  .tg.uv{background:rgba(180,140,90,.20);color:#e8c79a}
+  .wlink{display:inline-flex;align-items:center;gap:5px;margin-top:11px;font-size:12px;font-weight:800;color:var(--teal);text-decoration:none;border:1px solid rgba(67,179,199,.35);border-radius:999px;padding:5px 12px}
+  .flist{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+  .flist li{font-size:13px;color:var(--ink-soft);line-height:1.55;padding-left:15px;position:relative}
+  .flist li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--acc)}
+  .flist b{color:var(--ink)}
+  .star{font-size:11px;font-weight:800;color:#f2c477;background:rgba(210,154,60,.16);border-radius:5px;padding:1px 7px}
+
+  @media(min-width:560px){.title{font-size:34px}.meal{min-width:120px}}
+</style>
+</head>
+<body>
+
+<!-- ===== STICKY NAV ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><b>夏日山語・立山黑部 5 日</b><span class="tag">NGO05260701A</span></div>
+    <nav class="pills" id="pills">
+      <span class="pill" data-scroll="index"><span class="num">索</span>總覽</span>
+      <span class="pill" data-scroll="day1"><span class="num">1</span>名城溫泉</span>
+      <span class="pill" data-scroll="day2"><span class="num">2</span>上高地</span>
+      <span class="pill" data-scroll="day3"><span class="num">3</span>立山黑部</span>
+      <span class="pill" data-scroll="day4"><span class="num">4</span>合掌村</span>
+      <span class="pill" data-scroll="day5"><span class="num">5</span>賦歸</span>
+      <span class="pill lang" data-scroll="phrases">🗣 旅行用語</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Summer in the Japan Alps</div>
+    <h1 class="title">夏日山語・立山黑部 5 日
+      <small>下呂溫泉 ・ 秘境上高地 ・ 合掌村 ・ 兼六園 ・ 牧歌花海 ・ 飛驒牛</small>
+    </h1>
+    <div class="route-line">名古屋進 ✈ 小松出　｜　<span class="num">2026/07/01</span> – <span class="num">07/05</span>　｜　5 天 4 夜</div>
+
+    <div class="meta-grid">
+      <div class="meta"><div class="k">集合</div><div class="v"><span class="num">7/1　06:30</span></div></div>
+      <div class="meta"><div class="k">地點・櫃台</div><div class="v">桃機 T1・虎航 7 號</div></div>
+      <div class="meta"><div class="k">去程 IT206</div><div class="v"><span class="num">09:00</span> 桃園 → 名古屋 <span class="num">12:55</span></div></div>
+      <div class="meta"><div class="k">回程 IT253</div><div class="v"><span class="num">16:55</span> 小松 → 桃園 <span class="num">19:10</span></div></div>
+      <div class="meta full"><div class="k">領隊／導遊</div><div class="v">蕭海珠</div></div>
+    </div>
+
+    <div class="calls">
+      <a class="call" href="tel:+886917080080"><span class="ph">📞</span>導遊（國內）0917-080-080</a>
+      <a class="call" href="tel:+817055942603"><span class="ph">📞</span>導遊（國外）070-5594-2603</a>
+      <a class="call" href="tel:0958402841"><span class="ph">🚌</span>送機 0958-402-841</a>
+    </div>
+  </div>
+  <svg class="ridge" viewBox="0 0 680 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,60 L0,34 L90,12 L170,40 L250,8 L340,42 L420,18 L520,46 L600,14 L680,38 L680,60 Z" fill="currentColor"/>
+  </svg>
+</header>
+
+<!-- ===== QUICK INDEX ===== -->
+<section id="index" class="wrap" style="scroll-margin-top:96px">
+  <div class="kicker">Quick Index</div>
+  <h2 class="sec">快速索引 — 點選跳到當天或景點</h2>
+  <div class="idx">
+    <div class="idx-row" data-scroll="day1" style="--acc:var(--d1)">
+      <div class="idx-head"><span class="idx-d">第 1 天</span><span class="idx-date">7/1 三</span><span class="idx-theme">名城・溫泉初體驗</span></div>
+      <div class="chips">
+        <span class="chip wx-chip">🌤 28–30°</span>
+        <span class="chip" data-scroll="s-centrair">中部機場</span>
+        <span class="chip" data-scroll="s-inuyama">國寶犬山城</span>
+        <span class="chip" data-scroll="s-shitamachi">犬山城下町</span>
+        <span class="chip" data-scroll="s-sanko">三光稻荷神社</span>
+        <span class="chip" data-scroll="s-gero">下呂溫泉</span>
+      </div>
+    </div>
+    <div class="idx-row" data-scroll="day2" style="--acc:var(--d2)">
+      <div class="idx-head"><span class="idx-d">第 2 天</span><span class="idx-date">7/2 四</span><span class="idx-theme">飛驒小京都・祕境上高地</span></div>
+      <div class="chips">
+        <span class="chip wx-chip">🌤 上高地 20–23°</span>
+        <span class="chip" data-scroll="s-takayama">飛驒高山老街</span>
+        <span class="chip" data-scroll="s-nakabashi">中橋</span>
+        <span class="chip" data-scroll="s-taisho">大正池</span>
+        <span class="chip" data-scroll="s-kappa">河童橋</span>
+      </div>
+    </div>
+    <div class="idx-row" data-scroll="day3" style="--acc:var(--d3)">
+      <div class="idx-head"><span class="idx-d">第 3 天</span><span class="idx-date">7/3 五</span><span class="idx-theme">立山黑部・日本屋脊</span></div>
+      <div class="chips">
+        <span class="chip wx-chip">🌤 室堂 10–15°</span>
+        <span class="chip" data-scroll="s-alpine">六段交通全紀錄</span>
+        <span class="chip" data-scroll="s-yuki">雪之大谷・室堂</span>
+        <span class="chip" data-scroll="s-dam">黑部水壩</span>
+      </div>
+    </div>
+    <div class="idx-row" data-scroll="day4" style="--acc:var(--d4)">
+      <div class="idx-head"><span class="idx-d">第 4 天</span><span class="idx-date">7/4 六</span><span class="idx-theme">名園・合掌村・薰衣草</span></div>
+      <div class="chips">
+        <span class="chip wx-chip">🌤 30–32°</span>
+        <span class="chip" data-scroll="s-kenroku">兼六園</span>
+        <span class="chip" data-scroll="s-shirakawa">白川鄉合掌村</span>
+        <span class="chip" data-scroll="s-bokka">牧歌之里花田</span>
+        <span class="chip" data-scroll="s-sakae">名古屋榮</span>
+      </div>
+    </div>
+    <div class="idx-row" data-scroll="day5" style="--acc:var(--d5)">
+      <div class="idx-head"><span class="idx-d">第 5 天</span><span class="idx-date">7/5 日</span><span class="idx-theme">暢購・賦歸</span></div>
+      <div class="chips">
+        <span class="chip wx-chip">🌤 28–30°</span>
+        <span class="chip" data-scroll="s-outlet">小矢部 Outlet</span>
+        <span class="chip" data-scroll="s-home">小松機場・返台</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 1 ===== -->
+<section id="day1" class="wrap day" style="--acc:var(--d1)">
+  <div class="day-head">
+    <div class="day-no"><span class="num big">1</span>DAY ONE</div>
+    <div class="day-date"><span class="num">2026 / 7 / 1</span>（三）</div>
+    <div class="day-theme">名城・溫泉初體驗</div>
+    <div class="day-route">桃園 → 中部機場 → 犬山城 → 城下町 → 三光稻荷 → 下呂溫泉</div>
+    <div class="day-wx"><span class="t">🌤 28–30°</span><span class="sep">·</span>梅雨末期，悶熱多雨、雨具必備<span class="sep">·</span><a href="https://www.google.com/search?q=Gero+Onsen+weather">即時預報</a></div>
+  </div>
+
+  <div class="stop" id="s-centrair">
+    <div class="stop-ico">🛬</div>
+    <div class="stop-body">
+      <div class="stop-name">中部國際機場 <span class="stop-jp">セントレア／Centrair</span></div>
+      <div class="stop-desc">日本三大海上機場之一，抵達後展開北陸浪漫之旅；航廈內有歐風點心街與江戶風商店街可逛。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-inuyama">
+    <div class="stop-ico">🏯</div>
+    <div class="stop-body">
+      <div class="stop-name">國寶犬山城 <span class="stop-jp">犬山城・いぬやまじょう</span><span class="stop-badge">國寶</span></div>
+      <div class="stop-desc">又名白帝城，16 世紀後半建造，是日本現存最古老的木造天守、四大國寶城之一，登上望樓可俯瞰木曾川。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-shitamachi">
+    <div class="stop-ico">🍡</div>
+    <div class="stop-body">
+      <div class="stop-name">犬山城下町 <span class="stop-jp">城下町・じょうかまち</span></div>
+      <div class="stop-desc">完整保留江戶街道的古老老街，邊走邊嚐烤味噌豆腐、五平餅；町屋改建的咖啡店很有味道。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-sanko">
+    <div class="stop-ico">⛩️</div>
+    <div class="stop-body">
+      <div class="stop-name">三光稻荷神社 <span class="stop-jp">三光稲荷神社</span><span class="stop-badge">戀愛・財運</span></div>
+      <div class="stop-desc">創建於 1586 年。以粉紅愛心繪馬與數十座紅鳥居爆紅，據說用御神水洗錢可招財，是熱門能量景點。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-gero">
+    <div class="stop-ico">♨️</div>
+    <div class="stop-body">
+      <div class="stop-name">下呂溫泉鄉 <span class="stop-jp">下呂温泉・げろおんせん</span><span class="stop-badge">雙溫泉之一</span></div>
+      <div class="stop-desc">與有馬、草津並列日本三名泉，泉質滑潤好膚。今晚入住溫泉飯店、享用會席料理。</div>
+      <div class="stop-tip"><b>泡湯小提醒：</b>結伴同行、時間勿過久；有心臟病、酒醉或身體不適者請勿入浴。</div>
+    </div>
+  </div>
+
+  <div class="logi">
+    <div class="meals">
+      <div class="meal"><div class="when">早餐</div><div class="what"><span class="x">✕</span> 溫暖的家</div></div>
+      <div class="meal"><div class="when">午餐</div><div class="what">機上套餐</div></div>
+      <div class="meal"><div class="when">晚餐</div><div class="what">飯店內會席料理</div></div>
+    </div>
+    <div class="hotel">
+      <div><div class="label">住宿</div><div class="hname">下呂溫泉觀光飯店 湯本館</div></div>
+      <a class="tel" href="tel:+81576255100">📞 撥打</a>
+    </div>
+  </div>
+
+  <div class="extra">
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🍜</span>住宿周邊美食（下呂溫泉街）</div>
+      <ul class="flist">
+        <li><b>飛驒牛串燒・握壽司</b>｜溫泉街小攤，邊走邊吃的招牌</li>
+        <li><b>雞ちゃん（雞肉味噌炒）</b>｜飛驒・下呂鄉土料理</li>
+        <li><b>溫泉蛋霜淇淋・下呂布丁</b>｜散步甜點</li>
+        <li>今晚飯店附<b>會席料理</b>，可留點胃口逛溫泉街、泡足湯</li>
+      </ul>
+    </div>
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🛍</span>必買伴手禮（飛驒・岐阜）</div>
+      <ul class="flist">
+        <li><b>さるぼぼ吊飾</b>｜飛驒招福娃娃，經典紀念品</li>
+        <li><b>朴葉味噌</b>｜在地特色味噌，配飯一流</li>
+        <li><b>飛驒牛仙貝・しぐれ煮</b>｜耐放好攜帶</li>
+        <li><b>栗きんとん</b>｜岐阜栗子和菓子名物</li>
+        <li><b>下呂布丁・溫泉煎餅</b>｜溫泉鄉限定</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 2 ===== -->
+<section id="day2" class="wrap day" style="--acc:var(--d2)">
+  <div class="day-head">
+    <div class="day-no"><span class="num big">2</span>DAY TWO</div>
+    <div class="day-date"><span class="num">2026 / 7 / 2</span>（四）</div>
+    <div class="day-theme">飛驒小京都・祕境上高地</div>
+    <div class="day-route">高山老街 → 中橋 → 上高地（大正池・河童橋）→ 黑部溫泉鄉</div>
+    <div class="day-wx"><span class="t">🌤 上高地 20–23°</span><span class="sep">·</span>清晨 10–13°、午後雷雨，帶薄外套<span class="sep">·</span><a href="https://www.google.com/search?q=Kamikochi+weather">即時預報</a></div>
+  </div>
+
+  <div class="stop" id="s-takayama">
+    <div class="stop-ico">🏮</div>
+    <div class="stop-body">
+      <div class="stop-name">飛驒高山・上三之町 <span class="stop-jp">古い町並・上三之町</span><span class="stop-badge">米其林</span></div>
+      <div class="stop-desc">素有「飛驒小京都」之稱的江戶古街，町家、酒藏、味噌坊林立。<b>特別贈送飛驒牛肉串</b>，也別錯過握壽司、醬油烤丸子。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-nakabashi">
+    <div class="stop-ico">🌉</div>
+    <div class="stop-body">
+      <div class="stop-name">中橋 <span class="stop-jp">中橋・なかばし</span></div>
+      <div class="stop-desc">橫跨宮川的朱紅色橋，是高山市中心的地標，夏季翠綠映橋，最適合拍照。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-taisho">
+    <div class="stop-ico">🏞️</div>
+    <div class="stop-body">
+      <div class="stop-name">大正池 <span class="stop-jp">大正池・たいしょういけ</span></div>
+      <div class="stop-desc">大正四年燒岳噴發堰塞而成的水池，是上高地必看景點；沿梓川漫步，落葉松與草原如詩如畫。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-kappa">
+    <div class="stop-ico">⛰️</div>
+    <div class="stop-body">
+      <div class="stop-name">河童橋 <span class="stop-jp">河童橋・かっぱばし</span><span class="stop-badge">祕境地標</span></div>
+      <div class="stop-desc">上高地的經典之橋。上游可眺穗高連峰與明神岳，下游飽覽燒岳，被譽為神所賜予的禮物、宛如人間仙境。</div>
+      <div class="stop-tip"><b>注意：</b>7–10 月旺季實施車輛管制，途中需改搭上高地環保接駁車；若河水暴漲或天候不佳，將改由導遊帶往河童橋附近散步。</div>
+    </div>
+  </div>
+
+  <div class="logi">
+    <div class="meals">
+      <div class="meal"><div class="when">早餐</div><div class="what">飯店內</div></div>
+      <div class="meal"><div class="when">午餐</div><div class="what">飛驒牛（豚）陶板定食</div></div>
+      <div class="meal"><div class="when">晚餐</div><div class="what">飯店內會席料理</div></div>
+    </div>
+    <div class="hotel">
+      <div><div class="label">住宿</div><div class="hname">黑部 Sun Valley 飯店</div></div>
+      <a class="tel" href="tel:+81261854037">📞 撥打</a>
+    </div>
+  </div>
+
+  <div class="extra">
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🍜</span>住宿周邊美食</div>
+      <ul class="flist">
+        <li>今晚飯店供<b>會席料理</b>（晚餐已含）；午餐為<b>飛驒牛（豚）陶板定食</b></li>
+        <li><b>飛驒牛肉串（贈送）</b>｜上午高山老街必嚐</li>
+        <li>山麓若外出：<b>信州蕎麥麵・おやき（野菜烤饅）</b></li>
+      </ul>
+    </div>
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🛍</span>必買伴手禮（飛驒高山順買）</div>
+      <ul class="flist">
+        <li><b>高山老街採買</b>｜飛驒牛製品、地酒、味噌、醬油</li>
+        <li><b>上高地限定點心</b>｜河童造型菓子、餅乾</li>
+        <li><b>飛驒一位細工・木工小物</b>｜在地工藝</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 3 ===== -->
+<section id="day3" class="wrap day" style="--acc:var(--d3)">
+  <div class="day-head">
+    <div class="day-no"><span class="num big">3</span>DAY THREE</div>
+    <div class="day-date"><span class="num">2026 / 7 / 3</span>（五）</div>
+    <div class="day-theme">立山黑部・登上日本屋脊</div>
+    <div class="day-route">扇澤 → 黑部水壩 → 黑部平 → 大觀峰 → 室堂 → 美女平 → 金澤</div>
+    <div class="day-wx"><span class="t">🌤 室堂 10–15°</span><span class="sep">·</span>高山強風、務必防風保暖；金澤 28–30°<span class="sep">·</span><a href="https://www.google.com/search?q=Murodo+Tateyama+weather">即時預報</a></div>
+  </div>
+
+  <div class="stop" id="s-yuki">
+    <div class="stop-ico">🏔️</div>
+    <div class="stop-body">
+      <div class="stop-name">立山黑部阿爾卑斯之路 <span class="stop-jp">立山黒部アルペンルート</span><span class="stop-badge">六項交通已含</span></div>
+      <div class="stop-desc">有「日本阿爾卑斯」之稱的中部山岳國立公園，日本三大靈山之一。換乘六種交通工具翻山越嶺，飽覽雪牆、峽谷與水壩絕景；最高點室堂約 2,450 公尺。</div>
+    </div>
+  </div>
+
+  <div class="alpine" id="s-alpine">
+    <h3>🚠 六段交通・登山時間軸</h3>
+    <div class="sub">從長野側扇澤一路翻越立山連峰，下到富山側美女平（全程約 2.5–3 小時）</div>
+    <div class="leg">
+      <div class="node">
+        <div class="pt">扇澤 <small>1,433m・出發</small></div>
+        <div class="via">🚌 關電隧道電氣巴士</div>
+      </div>
+      <div class="node">
+        <div class="pt" id="s-dam">黑部水壩 <small>下車・徒步過壩</small></div>
+        <div class="via">🚶 徒步</div>
+      </div>
+      <div class="node">
+        <div class="pt">黑部湖</div>
+        <div class="via">🚞 黑部地下纜車（全線地下）</div>
+      </div>
+      <div class="node">
+        <div class="pt">黑部平 <small>1,828m</small></div>
+        <div class="via">🚡 立山空中纜車（無支柱・全日本最長）</div>
+      </div>
+      <div class="node">
+        <div class="pt">大觀峰 <small>2,316m・展望台</small></div>
+        <div class="via">🚎 立山隧道無軌電車</div>
+      </div>
+      <div class="node">
+        <div class="pt"><span class="peak">★ 室堂　雪之大谷</span> <small>2,450m・最高點</small></div>
+        <div class="via">🚌 立山高原巴士</div>
+      </div>
+      <div class="node">
+        <div class="pt">美女平 <small>977m</small></div>
+        <div class="via">🚞 立山登山纜車</div>
+      </div>
+      <div class="node">
+        <div class="pt">立山站 → 金澤 <small>搭乘遊覽車</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>立山黑部・特別提醒</b>
+    <ul>
+      <li>本日將上到海拔約 3,000 公尺高山區，停留約 3–4 小時，<b>務必攜帶防風外套與帽子</b>。</li>
+      <li><b>雪之迴廊</b>開放參考為 4/15–6/25；<b>黑部水壩大洩洪</b>參考 6/26–10/15，本日（7/3）有機會看到壯觀洩洪。</li>
+      <li>旺季人潮多，美女平～立山站區間纜車可能改搭代行巴士；若機械故障或天候不佳致無法搭完全程，將改其他交通替代，恕不退費。</li>
+    </ul>
+  </div>
+
+  <div class="logi">
+    <div class="meals">
+      <div class="meal"><div class="when">早餐</div><div class="what">飯店內</div></div>
+      <div class="meal"><div class="when">午餐</div><div class="what">立山黑部鰻魚飯套餐（或發代金 ¥2500）</div></div>
+      <div class="meal"><div class="when">晚餐</div><div class="what"><span class="x">✕</span> 方便逛街・敬請自理</div></div>
+    </div>
+    <div class="hotel">
+      <div><div class="label">住宿</div><div class="hname">金澤 T-MARK 飯店</div></div>
+      <a class="tel" href="tel:+81762109021">📞 撥打</a>
+    </div>
+  </div>
+
+  <div class="extra">
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🍜</span>住宿周邊美食（金澤・片町／香林坊）<span class="star">晚餐自理</span></div>
+      <div class="xbody">飯店就在<b>片町・香林坊</b>鬧區，餐廳・居酒屋林立，步行可達近江町市場。</div>
+      <ul class="flist">
+        <li><b>近江町市場</b>｜海鮮丼、壽司、喉黑魚（のどぐろ）</li>
+        <li><b>金澤關東煮（金沢おでん）</b>｜在地名物</li>
+        <li><b>金箔霜淇淋・治部煮・Hanton Rice</b>｜金澤限定風味</li>
+      </ul>
+    </div>
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🛍</span>必買伴手禮（立山黑部沿途／金澤・石川）</div>
+      <ul class="flist">
+        <li><b>雷鳥之里（雷鳥の里）</b>｜北阿爾卑斯名菓，立山賣店必買</li>
+        <li><b>黑部水壩咖哩調理包</b>｜趣味伴手禮</li>
+        <li><b>中田屋金鍔（きんつば）</b>｜金澤代表和菓子</li>
+        <li><b>加賀棒茶・金箔製品／金箔面膜（箔一）</b>｜金澤經典</li>
+        <li><b>福兔（福うさぎ）・起上最中・ビーバー米果</b>｜分送好物</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 4 ===== -->
+<section id="day4" class="wrap day" style="--acc:var(--d4)">
+  <div class="day-head">
+    <div class="day-no"><span class="num big">4</span>DAY FOUR</div>
+    <div class="day-date"><span class="num">2026 / 7 / 4</span>（六）</div>
+    <div class="day-theme">名園・合掌村・薰衣草</div>
+    <div class="day-route">兼六園 → 白川鄉合掌村 → 牧歌之里 → 免稅店 → 名古屋榮</div>
+    <div class="day-wx"><span class="t">🌤 30–32°</span><span class="sep">·</span>高溫炎熱、防曬補水<span class="sep">·</span><a href="https://www.google.com/search?q=Nagoya+weather">即時預報</a></div>
+  </div>
+
+  <div class="stop" id="s-kenroku">
+    <div class="stop-ico">🌸</div>
+    <div class="stop-body">
+      <div class="stop-name">兼六園 <span class="stop-jp">兼六園・けんろくえん</span><span class="stop-badge">日本三名園</span></div>
+      <div class="stop-desc">與偕樂園、後樂園並列日本三大名園。1676 年始建的迴遊式林泉庭園，兼具宏大、幽邃、人力、蒼古、水泉、眺望六勝。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-shirakawa">
+    <div class="stop-ico">🏘️</div>
+    <div class="stop-body">
+      <div class="stop-name">白川鄉合掌村 <span class="stop-jp">白川郷・しらかわごう</span><span class="stop-badge">世界遺產</span></div>
+      <div class="stop-desc">200–300 年歷史的合掌造茅葺屋，急斜屋頂如雙手合十以防積雪。1995 年登錄世界遺產，現存約 113 棟，田園古意盎然。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-bokka">
+    <div class="stop-ico">💜</div>
+    <div class="stop-body">
+      <div class="stop-name">牧歌之里 <span class="stop-jp">牧歌の里</span><span class="stop-badge">薰衣草 6–7 月</span></div>
+      <div class="stop-desc">標高 1,000 公尺高原花園牧場，可賞薰衣草、向日葵、波斯菊，與農場動物互動、搭花田小火車，並享用飛驒牛和牛 BBQ。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-sakae">
+    <div class="stop-ico">🛍️</div>
+    <div class="stop-body">
+      <div class="stop-name">名古屋榮・中央塔樓 <span class="stop-jp">栄・大津通</span></div>
+      <div class="stop-desc">先逛免稅店採買伴手禮，再到榮商圈：245 公尺高的中央塔樓有高島屋、書店、餐廳街，地下街與大津通名店林立。</div>
+    </div>
+  </div>
+
+  <div class="logi">
+    <div class="meals">
+      <div class="meal"><div class="when">早餐</div><div class="what">飯店內</div></div>
+      <div class="meal"><div class="when">午餐</div><div class="what">牧歌之里 BBQ 套餐</div></div>
+      <div class="meal"><div class="when">晚餐</div><div class="what"><span class="x">✕</span> 方便逛街・敬請自理</div></div>
+    </div>
+    <div class="hotel">
+      <div><div class="label">住宿</div><div class="hname">TRAVELODGE HOTEL 名古屋榮</div></div>
+      <a class="tel" href="tel:+81522288410">📞 撥打</a>
+    </div>
+  </div>
+
+  <div class="extra">
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🍜</span>住宿周邊美食（名古屋・榮）<span class="star">晚餐自理</span></div>
+      <div class="xbody">飯店位於<b>榮</b>，名古屋名物餐廳密集，多在榮站徒步 3–9 分。</div>
+      <ul class="flist">
+        <li><b>鰻魚飯三吃（ひつまぶし）</b>｜名古屋第一名物</li>
+        <li><b>味噌豬排（矢場とん）・味噌煮込烏龍麵</b>｜赤味噌風味</li>
+        <li><b>手羽先（世界の山ちゃん／風來坊）</b>｜下酒名物</li>
+        <li><b>台灣拉麵・あんかけスパ・天むす</b>｜在地特色</li>
+      </ul>
+    </div>
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🛍</span>必買伴手禮（名古屋・愛知）</div>
+      <ul class="flist">
+        <li><b>坂角總本舖「ゆかり」</b>｜蝦味仙貝，名古屋伴手禮代表</li>
+        <li><b>ういろう（外郎糕）</b>｜青柳等老舖名物</li>
+        <li><b>赤味噌・味噌調味料</b>｜名古屋廚房必備</li>
+        <li><b>ぴよりん・小雞造型甜點</b>｜人氣話題</li>
+        <li><b>中央塔樓／榮百貨・免稅店</b>一次購足</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 5 ===== -->
+<section id="day5" class="wrap day" style="--acc:var(--d5)">
+  <div class="day-head">
+    <div class="day-no"><span class="num big">5</span>DAY FIVE</div>
+    <div class="day-date"><span class="num">2026 / 7 / 5</span>（日）</div>
+    <div class="day-theme">暢購・賦歸</div>
+    <div class="day-route">小矢部三井 Outlet → 小松機場 → 桃園</div>
+    <div class="day-wx"><span class="t">🌤 28–30°</span><span class="sep">·</span>北陸悶熱、可能短暫陣雨<span class="sep">·</span><a href="https://www.google.com/search?q=Komatsu+Ishikawa+weather">即時預報</a></div>
+  </div>
+
+  <div class="stop" id="s-outlet">
+    <div class="stop-ico">🛒</div>
+    <div class="stop-body">
+      <div class="stop-name">北陸小矢部三井 Outlet <span class="stop-jp">三井アウトレット</span></div>
+      <div class="stop-desc">匯集國內外時裝與運動名牌、北陸特產的室內型商城，不受天候影響；另設約 50 公尺高摩天輪與兒童戶外廣場。</div>
+    </div>
+  </div>
+  <div class="stop" id="s-home">
+    <div class="stop-ico">✈️</div>
+    <div class="stop-body">
+      <div class="stop-name">小松機場 → 桃園 <span class="stop-jp">虎航 IT253</span></div>
+      <div class="stop-desc">滿載回憶，搭乘班機返回溫暖的家。<b>IT253　16:55 小松 → 19:10 桃園。</b></div>
+    </div>
+  </div>
+
+  <div class="logi">
+    <div class="meals">
+      <div class="meal"><div class="when">早餐</div><div class="what">飯店內</div></div>
+      <div class="meal"><div class="when">午餐</div><div class="what"><span class="x">✕</span> 方便逛街・敬請自理</div></div>
+      <div class="meal"><div class="when">晚餐</div><div class="what">機上套餐</div></div>
+    </div>
+    <div class="hotel">
+      <div><div class="label">住宿</div><div class="hname">溫暖的家 🏡</div></div>
+    </div>
+  </div>
+
+  <div class="extra">
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🍜</span>美食（Outlet／小松機場）<span class="star">午餐自理</span></div>
+      <ul class="flist">
+        <li><b>小矢部 Outlet 美食街</b>｜北陸物產、輕食、甜點</li>
+        <li><b>小松機場餐飲</b>｜返台前最後一餐、白蝦料理</li>
+      </ul>
+    </div>
+    <div class="xcard">
+      <div class="xhead"><span class="xi">🛍</span>必買伴手禮（北陸・最後補貨）</div>
+      <ul class="flist">
+        <li><b>白蝦仙貝・富山鱒魚壽司（ます寿し）</b>｜北陸名物</li>
+        <li><b>加賀棒茶・金箔小物</b>｜石川補貨</li>
+        <li><b>名牌 Outlet 商品</b>｜服飾・運動・雜貨</li>
+        <li><b>小松機場限定・北陸銘菓</b>｜登機前帶齊</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHRASES ===== -->
+<section id="phrases" class="wrap" style="scroll-margin-top:96px">
+  <div class="kicker">Japanese Phrases</div>
+  <h2 class="sec">旅行用語 — 中文 / 日文 / 羅馬拼音</h2>
+
+  <details class="acc" open>
+    <summary><span class="ico">🙂</span>基本・問路 <span class="cnt">9 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">你好／早安</div><div class="ph-jp">こんにちは／おはようございます</div><div class="ph-ro">konnichiwa / ohayō gozaimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">謝謝</div><div class="ph-jp">ありがとうございます</div><div class="ph-ro">arigatō gozaimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">不好意思／對不起（也可用來叫人）</div><div class="ph-jp">すみません</div><div class="ph-ro">sumimasen</div></div>
+    <div class="ph-row"><div class="ph-zh">麻煩你了／拜託了</div><div class="ph-jp">お願いします</div><div class="ph-ro">onegai shimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">是／不是</div><div class="ph-jp">はい／いいえ</div><div class="ph-ro">hai / iie</div></div>
+    <div class="ph-row"><div class="ph-zh">我不會日文</div><div class="ph-jp">日本語が わかりません</div><div class="ph-ro">nihongo ga wakarimasen</div></div>
+    <div class="ph-row"><div class="ph-zh">你會說中文／英文嗎？</div><div class="ph-jp">中国語／英語が 話せますか？</div><div class="ph-ro">chūgokugo / eigo ga hanasemasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">請再說一次</div><div class="ph-jp">もう一度 お願いします</div><div class="ph-ro">mō ichido onegai shimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">廁所在哪裡？</div><div class="ph-jp">トイレは どこですか？</div><div class="ph-ro">toire wa doko desu ka?</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">🚌</span>機場・交通 <span class="cnt">6 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">車站在哪裡？</div><div class="ph-jp">駅は どこですか？</div><div class="ph-ro">eki wa doko desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">這班巴士到○○嗎？</div><div class="ph-jp">このバスは ○○に 行きますか？</div><div class="ph-ro">kono basu wa ○○ ni ikimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">我迷路了</div><div class="ph-jp">道に 迷いました</div><div class="ph-ro">michi ni mayoimashita</div></div>
+    <div class="ph-row"><div class="ph-zh">我在找這個地方（出示地址）</div><div class="ph-jp">この場所を 探しています</div><div class="ph-ro">kono basho o sagashite imasu</div></div>
+    <div class="ph-row"><div class="ph-zh">我的行李</div><div class="ph-jp">荷物（にもつ）</div><div class="ph-ro">nimotsu</div></div>
+    <div class="ph-row"><div class="ph-zh">幾點集合／出發？</div><div class="ph-jp">何時に 集合／出発ですか？</div><div class="ph-ro">nanji ni shūgō / shuppatsu desu ka?</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">🍜</span>餐廳・點餐 <span class="cnt">9 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">麻煩給我菜單</div><div class="ph-jp">メニューを お願いします</div><div class="ph-ro">menyū o onegai shimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">推薦的是什麼？</div><div class="ph-jp">おすすめは 何ですか？</div><div class="ph-ro">osusume wa nan desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">我要這個（指著菜單）</div><div class="ph-jp">これを ください</div><div class="ph-ro">kore o kudasai</div></div>
+    <div class="ph-row"><div class="ph-zh">我想吃飛驒牛</div><div class="ph-jp">飛騨牛（ひだぎゅう）が 食べたいです</div><div class="ph-ro">hidagyū ga tabetai desu</div></div>
+    <div class="ph-row"><div class="ph-zh">我吃素</div><div class="ph-jp">私は ベジタリアンです</div><div class="ph-ro">watashi wa bejitarian desu</div></div>
+    <div class="ph-row"><div class="ph-zh">我對○○過敏</div><div class="ph-jp">○○の アレルギーが あります</div><div class="ph-ro">○○ no arerugī ga arimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">請給我水</div><div class="ph-jp">お水を ください</div><div class="ph-ro">o-mizu o kudasai</div></div>
+    <div class="ph-row"><div class="ph-zh">好好吃！</div><div class="ph-jp">おいしいです！</div><div class="ph-ro">oishii desu!</div></div>
+    <div class="ph-row"><div class="ph-zh">麻煩結帳</div><div class="ph-jp">お会計 お願いします</div><div class="ph-ro">o-kaikei onegai shimasu</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">🛍️</span>購物・退稅 <span class="cnt">7 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">這個多少錢？</div><div class="ph-jp">これは いくらですか？</div><div class="ph-ro">kore wa ikura desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">可以退稅嗎？</div><div class="ph-jp">免税できますか？</div><div class="ph-ro">menzei dekimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">我要刷卡</div><div class="ph-jp">カードで 払います</div><div class="ph-ro">kādo de haraimasu</div></div>
+    <div class="ph-row"><div class="ph-zh">可以試穿嗎？</div><div class="ph-jp">試着 できますか？</div><div class="ph-ro">shichaku dekimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">有別的尺寸／顏色嗎？</div><div class="ph-jp">別の サイズ／色は ありますか？</div><div class="ph-ro">betsu no saizu / iro wa arimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">請給我袋子</div><div class="ph-jp">袋を ください</div><div class="ph-ro">fukuro o kudasai</div></div>
+    <div class="ph-row"><div class="ph-zh">我只是看看</div><div class="ph-jp">見ているだけです</div><div class="ph-ro">mite iru dake desu</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">♨️</span>飯店・溫泉 <span class="cnt">6 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">我有預約（用導遊／團名）</div><div class="ph-jp">予約して います</div><div class="ph-ro">yoyaku shite imasu</div></div>
+    <div class="ph-row"><div class="ph-zh">幾點退房？</div><div class="ph-jp">チェックアウトは 何時ですか？</div><div class="ph-ro">chekku auto wa nanji desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">有 Wi-Fi 嗎？</div><div class="ph-jp">Wi-Fiは ありますか？</div><div class="ph-ro">waifai wa arimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">溫泉（大浴場）在哪裡？</div><div class="ph-jp">温泉（大浴場）は どこですか？</div><div class="ph-ro">onsen (daiyokujō) wa doko desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">冷氣／暖氣怎麼開？</div><div class="ph-jp">冷房／暖房は どうやって つけますか？</div><div class="ph-ro">reibō / danbō wa dō yatte tsukemasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">可以多給一條毛巾嗎？</div><div class="ph-jp">タオルを もう一枚 もらえますか？</div><div class="ph-ro">taoru o mō ichimai moraemasu ka?</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">📸</span>景點・拍照 <span class="cnt">5 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">可以幫我拍照嗎？</div><div class="ph-jp">写真を 撮って もらえますか？</div><div class="ph-ro">shashin o totte moraemasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">這裡可以拍照嗎？</div><div class="ph-jp">写真を 撮っても いいですか？</div><div class="ph-ro">shashin o tottemo ii desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">入口／出口在哪？</div><div class="ph-jp">入口／出口は どこですか？</div><div class="ph-ro">iriguchi / deguchi wa doko desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">幾點開門／關門？</div><div class="ph-jp">何時に 開きます／閉まりますか？</div><div class="ph-ro">nanji ni akimasu / shimarimasu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">好美喔！</div><div class="ph-jp">きれいですね！</div><div class="ph-ro">kirei desu ne!</div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">🆘</span>緊急・求助 <span class="cnt">6 句</span></summary>
+    <div class="ph-row"><div class="ph-zh">救命！</div><div class="ph-jp">助けて！</div><div class="ph-ro">tasukete!</div></div>
+    <div class="ph-row"><div class="ph-zh">我身體不舒服</div><div class="ph-jp">気分が 悪いです</div><div class="ph-ro">kibun ga warui desu</div></div>
+    <div class="ph-row"><div class="ph-zh">請幫我叫醫生／救護車</div><div class="ph-jp">医者／救急車を 呼んで ください</div><div class="ph-ro">isha / kyūkyūsha o yonde kudasai</div></div>
+    <div class="ph-row"><div class="ph-zh">醫院／藥局在哪裡？</div><div class="ph-jp">病院／薬局は どこですか？</div><div class="ph-ro">byōin / yakkyoku wa doko desu ka?</div></div>
+    <div class="ph-row"><div class="ph-zh">我的護照不見了</div><div class="ph-jp">パスポートを なくしました</div><div class="ph-ro">pasupōto o nakushimashita</div></div>
+    <div class="ph-row"><div class="ph-zh">請幫我聯絡導遊</div><div class="ph-jp">ガイドに 連絡して ください</div><div class="ph-ro">gaido ni renraku shite kudasai</div></div>
+  </details>
+</section>
+
+<!-- ===== PRACTICAL INFO ===== -->
+<section class="wrap" style="scroll-margin-top:96px">
+  <div class="kicker">Good to Know</div>
+  <h2 class="sec">實用資訊</h2>
+
+  <details class="acc" open>
+    <summary><span class="ico">🧳</span>行李・小費・基本</summary>
+    <div class="info-row"><div class="kv"><span class="k">虎航行李</span><span>託運 1 件 <b>20 公斤</b>＋手提 <b>10 公斤</b>（最多一台筆電＋一件隨身共 2 件）。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">小費</span><span>導遊、司機服務費每人每日 <b>新台幣 300 元</b>（小孩、嬰兒亦同）。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">鋰電池</span><span>備用鋰電池僅能放<b>手提行李</b>，須 100Wh 以下；打火機等不可放托運。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">高山裝備</span><span>立山黑部約 3,000m，請備防風外套、帽子；早晚溫差大，可帶薄外套與護唇膏。</span></div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">💴</span>貨幣・退稅・電壓</summary>
+    <div class="info-row"><div class="kv"><span class="k">匯率</span><span>約 <b>¥100 ≒ 台幣 21 元</b>（浮動，以當日為準）。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">退稅</span><span>同一店家未稅消費滿 <b>¥5,500</b> 可辦免稅；須出示護照，並於 30 天內帶離日本。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">消費稅</span><span>一般定價已含消費稅 10%。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">電壓</span><span><b>100V／60Hz</b>，台灣電器多可直接使用，建議備萬用插頭。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">時差</span><span>日本比台灣 <b>快 1 小時</b>（台灣 12:00 ＝ 日本 13:00），無夏令時間。</span></div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">🛂</span>簽證・海關</summary>
+    <div class="info-row"><div class="kv"><span class="k">簽證</span><span>90 天觀光免簽，護照效期需 <b>6 個月以上</b>；入境需按指紋、拍照。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">入境日本</span><span>每人限酒 3 瓶、菸 200 支；<b>嚴禁攜帶水果、豬肉製品、仿冒品</b>。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">回國台灣</span><span>滿 20 歲限菸 200 支、酒 1 公升；禁帶肉品、水果、生鮮、仿冒品。</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">液體上機</span><span>隨身液體單瓶 ≤100ml，裝於 1 公升透明夾鏈袋、每人限 1 袋。</span></div></div>
+  </details>
+
+  <details class="acc">
+    <summary><span class="ico">📞</span>國際電話撥打</summary>
+    <div class="info-row"><div class="kv"><span class="k">日→台</span><span>手機漫遊：<b>+886</b>＋去 0＋台灣號碼　／　市話：001010＋886＋去 0＋號碼</span></div></div>
+    <div class="info-row"><div class="kv"><span class="k">台→日</span><span>002 或 009＋<b>81</b>＋去 0＋日本號碼（或直撥導遊手機）</span></div></div>
+  </details>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="big">緊急聯絡・一鍵撥打</div>
+    <div class="ecalls">
+      <a class="ecall" href="tel:+886917080080"><span class="lab">導遊 蕭海珠（國內）</span><span class="no">0917-080-080</span></a>
+      <a class="ecall" href="tel:+817055942603"><span class="lab">導遊（國外）</span><span class="no">070-5594-2603</span></a>
+      <a class="ecall" href="tel:+886225636292"><span class="lab">國際救援・海外緊急服務</span><span class="no">02-2563-6292</span></a>
+      <a class="ecall" href="tel:+88633834845"><span class="lab">外交部領事事務局</span><span class="no">03-383-4845</span></a>
+      <a class="ecall" href="tel:080008850885"><span class="lab">旅外國人急難救助</span><span class="no">0800-0885-0885</span></a>
+    </div>
+    <p class="disc">※ 本行程表為制式參考，飯店與內容視航班與旅館確認，旅行社保留調整權利，以出發前說明會為準。導遊得因實際交通、氣候、突發狀況等因素，本於誠信原則做必要調整。本網頁由行程文件整理製作，僅供旅途快速查閱。</p>
+  </div>
+</footer>
+
+<button class="back" id="back" aria-label="回到頂端">↑</button>
+
+<script>
+  // make nav targets keyboard-accessible
+  document.querySelectorAll('[data-scroll]').forEach(el=>{
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','link');
+  });
+
+  function scrollToId(id){
+    const el=document.getElementById(id);
+    if(!el) return;
+    const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  // tap / click — no hrefs on these, so the app won't show an external-link prompt
+  document.addEventListener('click',(e)=>{
+    const t=e.target.closest('[data-scroll]');
+    if(!t) return;
+    e.preventDefault();
+    scrollToId(t.getAttribute('data-scroll'));
+  });
+  document.addEventListener('keydown',(e)=>{
+    if(e.key!=='Enter' && e.key!==' ') return;
+    const t=e.target.closest('[data-scroll]');
+    if(!t) return;
+    e.preventDefault();
+    scrollToId(t.getAttribute('data-scroll'));
+  });
+
+  // scroll-spy: highlight active day pill
+  const pills=Array.from(document.querySelectorAll('#pills .pill'));
+  const ids=["index","day1","day2","day3","day4","day5","phrases"];
+  const sections=ids.map(id=>document.getElementById(id)).filter(Boolean);
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const id=en.target.id;
+        pills.forEach(p=>p.dataset.active=(p.getAttribute('data-scroll')===id)?"true":"false");
+        const ap=pills.find(p=>p.getAttribute('data-scroll')===id);
+        if(ap) ap.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px",threshold:0});
+  sections.forEach(s=>io.observe(s));
+
+  // back-to-top
+  const back=document.getElementById('back');
+  window.addEventListener('scroll',()=>{back.classList.toggle('show',window.scrollY>700)},{passive:true});
+  back.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
